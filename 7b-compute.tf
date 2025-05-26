@@ -5,7 +5,7 @@ resource "aws_instance" "docker" {
   vpc_security_group_ids = [aws_security_group.docker.id]
   iam_instance_profile   = aws_iam_instance_profile.ec2_ecr_access.name
 
-  user_data = templatefile("${path.module}/user-data-build.sh", {
+  user_data = templatefile("${path.module}/scripts/user-data-build-server.sh.tpl", {
     region = var.region,
     repo   = aws_ecr_repository.main.repository_url
   })
