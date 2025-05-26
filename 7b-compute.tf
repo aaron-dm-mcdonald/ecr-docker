@@ -13,7 +13,7 @@ resource "aws_instance" "docker" {
   tags = {
     Name = "docker-builder"
   }
-  depends_on = [ aws_ecr_repository.main ]
+  depends_on = [aws_ecr_repository.main]
 }
 
 resource "null_resource" "wait_for_image" {
