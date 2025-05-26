@@ -17,7 +17,7 @@ output "ec2_info" {
   }
 }
 
-output "api_gateway_url" {
+output "function_url" {
   description = "Invoke URL for lambda"
   value       = aws_lambda_function_url.hello_world.function_url
 }
