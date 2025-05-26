@@ -1,2 +1,2 @@
 flask
-mangum
+aws_lambda_wsgi

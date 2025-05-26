@@ -1,10 +1,11 @@
-from flask import Flask
-from mangum import Mangum
+from flask import Flask, jsonify
+from aws_lambda_wsgi import response
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Hello from inside Lambda container!"
+def home():
+    return jsonify(message="Hello from Flask on Lambda!")
 
-handler = Mangum(app)  # Wrap Flask app for Lambda
+def lambda_handler(event, context):
+    return response(app, event, context)

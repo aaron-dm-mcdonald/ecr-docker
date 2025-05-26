@@ -1,11 +1,11 @@
-FROM public.ecr.aws/lambda/python:3.9
+FROM public.ecr.aws/lambda/python:3.11
 
-# Copy requirements and install
-COPY requirements.txt ./
+# Install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy app code
-COPY app.py ./
+# Copy app source
+COPY app.py .
 
-# Set the CMD to handler (module.function)
-CMD ["app.handler"]
+# Set the Lambda handler
+CMD ["app.lambda_handler"]
