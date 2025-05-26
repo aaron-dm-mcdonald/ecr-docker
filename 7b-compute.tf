@@ -21,7 +21,7 @@ resource "null_resource" "wait_for_image" {
 
   provisioner "local-exec" {
     command = <<EOT
-for i in $(seq 1 20); do
+for i in $(seq 1 24); do
   echo "Checking for ECR image: attempt $i"
   if aws ecr describe-images --repository-name ${aws_ecr_repository.main.name} --image-ids imageTag=latest --region ${var.region} >/dev/null 2>&1; then
     echo "ECR image found!"
