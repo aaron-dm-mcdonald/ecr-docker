@@ -19,3 +19,4 @@ aws ecr get-login-password --region ${region} | docker login --username AWS --pa
 sudo docker build -t my-app .
 sudo docker tag my-app:latest ${repo}:latest
 sudo docker push ${repo}:latest
+
