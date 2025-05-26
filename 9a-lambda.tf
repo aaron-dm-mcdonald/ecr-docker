@@ -13,6 +13,6 @@ resource "aws_lambda_function" "hello_world" {
 }
 
 resource "aws_lambda_function_url" "hello_world" {
-  function_name      = aws_lambda_function.test.function_name
+  function_name      = aws_lambda_function.hello_world.function_name
   authorization_type = "NONE"
 }
