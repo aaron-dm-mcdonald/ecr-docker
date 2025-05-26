@@ -1,11 +1,7 @@
-from flask import Flask, jsonify
-from aws_lambda_wsgi import response
-
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return jsonify(message="Hello from Flask on Lambda!")
+import json
 
 def lambda_handler(event, context):
-    return response(app, event, context)
+    return {
+        "statusCode": 200,
+        "body": json.dumps("hello world")
+    }
