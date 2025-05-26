@@ -16,6 +16,6 @@ sudo cd /docker-src/src
 aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${repo}
 
 # Build, tag, and push the image
-docker build -t my-app .
-docker tag my-app:latest ${repo}:latest
-docker push ${repo}:latest
+sudo docker build -t my-app .
+sudo docker tag my-app:latest ${repo}:latest
+sudo docker push ${repo}:latest

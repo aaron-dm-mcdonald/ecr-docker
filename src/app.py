@@ -5,6 +5,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello from Flask inside Lambda container!"
+    return "Hello from inside Lambda container!"
 
 handler = Mangum(app)  # Wrap Flask app for Lambda
