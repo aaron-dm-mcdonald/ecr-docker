@@ -17,7 +17,7 @@ output "ec2_info" {
   }
 }
 
-# output "api_gateway_url" {
-#   description = "Invoke URL for the HTTP API Gateway"
-#   value       = aws_apigatewayv2_api.http_api.api_endpoint
-# }
+output "api_gateway_url" {
+  description = "Invoke URL for the HTTP API Gateway"
+  value       = aws_apigatewayv2_api.http_api.api_endpoint
+}
