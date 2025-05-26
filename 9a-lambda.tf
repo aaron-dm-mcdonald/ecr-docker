@@ -11,3 +11,8 @@ resource "aws_lambda_function" "hello_world" {
   depends_on = [ aws_instance.docker, aws_instance.docker,null_resource.wait_for_image ]
 
 }
+
+resource "aws_lambda_function_url" "hello_world" {
+  function_name      = aws_lambda_function.test.function_name
+  authorization_type = "NONE"
+}
