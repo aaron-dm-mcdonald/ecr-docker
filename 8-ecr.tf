@@ -10,8 +10,6 @@ resource "aws_ecr_repository" "main" {
     Name = "test 3"
     env  = "dev"
   }
+  force_delete = true
 }
 
-output "ECR_address" {
-  value = aws_ecr_repository.main.repository_url
-}
