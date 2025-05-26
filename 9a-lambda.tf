@@ -5,10 +5,10 @@ resource "aws_lambda_function" "hello_world" {
 
   role = aws_iam_role.lambda_exec_role.arn
 
-  # Optional: Timeout defaults to 3 seconds; you can increase up to 900 (15 minutes)
+  # Optional: Timeout defaults to 3 seconds up to 900 sec
   timeout = 30
 
-  depends_on = [aws_instance.docker, aws_instance.docker, null_resource.wait_for_image]
+  depends_on = [ aws_instance.docker, null_resource.wait_for_image ]
 
 }
 
