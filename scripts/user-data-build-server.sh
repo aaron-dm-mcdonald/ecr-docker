@@ -7,10 +7,11 @@ dnf install -y docker git
 # Start Docker now and on reboot
 systemctl enable --now docker
 
-# Clone the repo and cd into src folder
-sudo rm -rf /docker-src
-sudo git clone https://github.com/aaron-dm-mcdonald/ecr-docker.git /docker-src
-sudo cd /docker-src/src
+# Download Dockerfile
+sudo mkdir -p /home/ec2-user/docker-src
+sudo cd /home/ec2-user/docker-src
+sudo git clone https://github.com/aaron-dm-mcdonald/ecr-docker.git .
+sudo cd /home/ec2-user/docker-src/src
 
 # Authenticate to ECR
 aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${repo}
