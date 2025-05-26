@@ -20,20 +20,12 @@ resource "null_resource" "wait_for_image" {
   depends_on = [aws_instance.docker]
 
   provisioner "local-exec" {
-    command = <<EOT
-for i in $(seq 1 24); do
-  echo "Checking for ECR image: attempt $i"
-  if aws ecr describe-images --repository-name ${aws_ecr_repository.main.name} --image-ids imageTag=latest --region ${var.region} >/dev/null 2>&1; then
-    echo "ECR image found!"
-    exit 0
-  fi
-  echo "Image not found yet, waiting 10 seconds..."
-  sleep 10
-done
-echo "Timeout reached: ECR image not found"
-exit 1
-EOT
-
+    command = file("${path.module}/scripts/wait-for-image.sh")
     interpreter = ["bash", "-c"]
+    environment = {
+      REPO_NAME = aws_ecr_repository.main.name
+      REGION    = var.region
+    }
   }
 }
+
